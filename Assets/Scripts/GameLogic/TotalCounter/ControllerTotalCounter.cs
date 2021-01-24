@@ -5,10 +5,18 @@ using UnityEngine;
 /// Класс отвечает за обработку данных глобального счетчика
 /// </summary>
 public class ControllerTotalCounter: MonoBehaviour
-{    
-    [SerializeField] private DataTotalCounter _data;
+{     
+    [Header("Ссылку на отображение общего счетчика(UI)")]
     [SerializeField] private ViewTotalCounter _view;
-      
+
+    private DataTotalCounter _data;
+
+    private void Awake()
+    {
+        _data = Resources.Load<DataTotalCounter>("TotalCounter");
+        _view.Init(_data);        
+    }
+
     private void Start()
     {        
         StartCoroutine(DelayAddingPoints());        

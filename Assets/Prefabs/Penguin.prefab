@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7518544841238453538}
   - component: {fileID: 7518544841237252844}
   - component: {fileID: 7518544841603292416}
-  - component: {fileID: 3691624478267916279}
   m_Layer: 0
   m_Name: Penguin
   m_TagString: Untagged
@@ -98,15 +97,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pathCreator: {fileID: 0}
   _speed: 2
---- !u!114 &3691624478267916279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7518544841239491086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 884e4fc2904db8f4ea3f5a12f7d9cf56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _distanceTravelled: 0

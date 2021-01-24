@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using PathCreation;
+using System;
 
 public class CharacterMovement : MonoBehaviour
-{
-    [Header("Сюда установить ссылку на путь:")]
-    [SerializeField] private PathCreator _pathCreator;
+{    
+    
     [Header("Скорость передвижения по пути:")]
     [SerializeField] private float _speed;
+    private Action _reachedEnd;
+    private PathCreator _pathCreator;
+    private float _distanceTravelled;
 
-    [SerializeField] private float _distanceTravelled;
+    public Action ReachedEnd { get => _reachedEnd; set => _reachedEnd = value; }
 
     public void Init(PathCreator pathCreator)
     {
@@ -25,6 +26,7 @@ public class CharacterMovement : MonoBehaviour
 
         if (_pathCreator.path.GetClosestTimeOnPath(transform.position) == 1)
         {
+            _reachedEnd?.Invoke();
             Destroy(this.gameObject);
         }
     }

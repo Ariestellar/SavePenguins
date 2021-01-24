@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -40,12 +38,19 @@ public class СomponentСreatorWindow : EditorWindow
 		{
 			CreateComponent();
 		}
-		GUILayout.Label("Эту кнопку применять когда после игры необходимо скинуть все значения компонентов в дефолтные для начала игры заново", EditorStyles.boldLabel);
+		GUILayout.Label("Эту кнопку применять когда после игры необходимо", EditorStyles.boldLabel);		
+		GUILayout.Label("скинуть все значения компонентов в дефолтные для", EditorStyles.boldLabel);		
+		GUILayout.Label("начала игры заново", EditorStyles.boldLabel);
 		EditorGUILayout.Space();
 		if (GUILayout.Button("Сбросить все компоненты на дефолтное значение"))
 		{
 			DataReset();
 		}
+		EditorGUILayout.Space();
+		GUILayout.Label("Пути сохранения фаилов: ", EditorStyles.boldLabel);
+		GUILayout.Label("Assets/Scripts/GameLogic/Improvement/Data/Default/", EditorStyles.boldLabel);
+		GUILayout.Label("Assets/Resources/DataImprovement/", EditorStyles.boldLabel);
+		GUILayout.Label("Если каталоги будут измененны то получим ошибку", EditorStyles.boldLabel);
 	}
 
 	/// <summary>
@@ -57,10 +62,10 @@ public class СomponentСreatorWindow : EditorWindow
 		data.Init(_price, _priceIncrease, _progressLimits, _amountIncrease, _sprite);
 		//Создаем два варианта:
 		//в папку "Default" - данные со значениями которые будут использоваться в начале игры
-		//в папку "Current" - данные для текущих значений которые будут использоваться в процессе игры
+		//в папку "Resources" - данные для текущих значений которые будут использоваться в процессе игры
 		//что бы можно было в любой момент сбросить до дефолтных значений текущие данные
-		AssetDatabase.CreateAsset(data, "Assets/Scripts/Improvement/Data/Default/" + _name + ".asset");		
-		AssetDatabase.CopyAsset("Assets/Scripts/Improvement/Data/Default/" + _name + ".asset", "Assets/Resources/" + _name + ".asset");		
+		AssetDatabase.CreateAsset(data, "Assets/Scripts/GameLogic/Improvement/Data/Default/" + _name + ".asset");		
+		AssetDatabase.CopyAsset("Assets/Scripts/GameLogic/Improvement/Data/Default/" + _name + ".asset", "Assets/Resources/DataImprovement/" + _name + ".asset");		
 		AssetDatabase.Refresh();
 
 		_name = "";
@@ -73,12 +78,12 @@ public class СomponentСreatorWindow : EditorWindow
 
 	private void DataReset()
 	{
-		string[] nameAssets = Directory.GetFiles("Assets/Scripts/Improvement/Data/Default/" , "*.asset");
+		string[] nameAssets = Directory.GetFiles("Assets/Scripts/GameLogic/Improvement/Data/Default/", "*.asset");
 		
         foreach (var item in nameAssets)
         {
 			var nameItem = Path.GetFileName(item);
-			AssetDatabase.CopyAsset("Assets/Scripts/Improvement/Data/Default/" + nameItem, "Assets/Resources/" + nameItem);
+			AssetDatabase.CopyAsset("Assets/Scripts/GameLogic/Improvement/Data/Default/" + nameItem, "Assets/Resources/DataImprovement/" + nameItem);
 		}      
 	}
 }
