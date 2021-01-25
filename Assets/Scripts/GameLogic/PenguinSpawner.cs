@@ -9,8 +9,13 @@ public class PenguinSpawner : MonoBehaviour
     [SerializeField] private GameObject _templatePenguin;
     [Header("Ссылку на путь пингвинов")]
     [SerializeField] private PathCreator _pathCreator;
-    [Header("Ссылку на счетчик пингвинов")]
-    [SerializeField] private PenguinСounter _penguinsCounter;
+    
+    private PenguinСounter _penguinsCounter;
+
+    public void Init(PenguinСounter penguinsCounter)
+    {
+        _penguinsCounter = penguinsCounter;
+    }
 
     public void CreatePenguin()
     {

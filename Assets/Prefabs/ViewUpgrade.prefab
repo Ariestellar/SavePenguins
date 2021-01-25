@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 3715519456074520643}
   - component: {fileID: 3715519456074520642}
   m_Layer: 5
-  m_Name: ImprovementView
+  m_Name: ViewUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -687,11 +687,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3715519456074520645}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd19d84839be7694c89c06ef4f67057a, type: 3}
+  m_Script: {fileID: 11500000, guid: 03a8c9ea55b75a9478b9603f3d4da7ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 0}
-  _controller: {fileID: 3715519456074520642}
   _spriteImprovement: {fileID: 3715519455839501950}
   _progressBarImage: {fileID: 3715519454277272521}
   _nameText: {fileID: 3715519455281168416}
@@ -712,4 +711,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _totalCounter: {fileID: 0}
   _data: {fileID: 0}
-  _view: {fileID: 3715519456074520643}

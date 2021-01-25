@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 /// <summary>
 /// Класс отвечает за отображение элементов улучшения
+/// Находится на префабе элемента улучшения
 /// </summary>
-public class ViewImprovement : MonoBehaviour
-{
-    [SerializeField] private DataImprovement _data;    
+public class ViewUpgrade : MonoBehaviour
+{     
     [Header("Ссылки на элементы уже установленны в префабе:")]
     [SerializeField] private Image _spriteImprovement;
     [SerializeField] private Image _progressBarImage;
@@ -16,7 +16,9 @@ public class ViewImprovement : MonoBehaviour
     [SerializeField] private Text _progressCountText;
     [SerializeField] private Button _button;
     [SerializeField] private Text _buttonText;
-    
+
+    private DataImprovement _data;
+
     public void Init(DataImprovement data, UnityAction actionClickButton)
     {
         _data = data;

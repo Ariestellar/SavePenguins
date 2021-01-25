@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PenguinСounter : MonoBehaviour
+public class PenguinСounter
 {
-    [SerializeField] int _totalCountPenguins;
+    int _totalCountPenguins;
 
     public void Append()
     {
