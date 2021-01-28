@@ -5,7 +5,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Класс отвечает за обработку команд от пользователя и бизнес логику
 /// </summary>
-[RequireComponent(typeof(ViewImprovement))]
+[RequireComponent(typeof(ViewUpgrade))]
 public class ControllerImprovement : MonoBehaviour
 {
     [SerializeField] private ControllerTotalCounter _totalCounter;
@@ -15,7 +15,7 @@ public class ControllerImprovement : MonoBehaviour
     {        
         _totalCounter = controllerTotalCounter;
         _data = data;
-        GetComponent<ViewImprovement>().Init(_data, Buy);
+        GetComponent<ViewUpgrade>().Init(_data, Buy);
 
     }
 

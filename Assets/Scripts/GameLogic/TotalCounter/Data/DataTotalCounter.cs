@@ -16,6 +16,8 @@ public class DataTotalCounter : ScriptableObject
     [Header("Текущее количество прибыли в единицу времени")]
     [Tooltip("Сериализовал, что бы, была возможность в начале игры задать при старте")]    
     [SerializeField] private int _currentAmountProfit;
+    [Header("Текущее количество пингвинов в ангарах")]    
+    [SerializeField] private int _currentPenguin;
 
     // Множители прибыли, не задаются вручную, а используется в контроллере, при особых событиях в игре:
     ///<summary>Множитель для ускорения и замедления времени</summary>
@@ -30,6 +32,7 @@ public class DataTotalCounter : ScriptableObject
     public float TimeInterval { get => _timeInterval; }    
     public int FactorTime { get => _factorTime; }
     public int FactorProfit { get => _factorProfit; }
+    public int CurrentPenguin { get => _currentPenguin; set => _currentPenguin = value; }
     #endregion
 
 }
