@@ -2706,6 +2706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textTotalScore: {fileID: 2080519385}
   _textProfit: {fileID: 1054683981}
+  _textCountPinguins: {fileID: 2109587992}
 --- !u!1 &1801935817
 GameObject:
   m_ObjectHideFlags: 0
@@ -4508,7 +4509,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4037270826733272199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 919778872dccc94418529f7350dfd32f, type: 3}
+  m_Script: {fileID: 11500000, guid: b71fbc65998694b4ba4ce81053b6b8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &4037270826733272201
@@ -4730,7 +4731,7 @@ MonoBehaviour:
       - 90
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0
     vertexPathMinVertexSpacing: 0
     showTransformTool: 1

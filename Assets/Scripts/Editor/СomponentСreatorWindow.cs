@@ -5,11 +5,11 @@ using UnityEngine;
 public class СomponentСreatorWindow : EditorWindow
 {
 	private string _name;	
-	private int _price;	
-	private int _priceIncrease;
+	private float _price;	
+	private float _priceIncrease;
 	//private int _currentProgress;	
 	private int _progressLimits;	
-	private int _amountIncrease;	
+	private float _amountIncrease;	
 	private Sprite _sprite;
 	//private bool _onLimitReached;
 
@@ -24,14 +24,14 @@ public class СomponentСreatorWindow : EditorWindow
 		GUILayout.Label("Окно для создания компонентов улучшения", EditorStyles.boldLabel);
 		EditorGUILayout.Space();
 		_name = EditorGUILayout.TextField("Имя", _name);
-		_price = EditorGUILayout.IntField("Цена", _price);
+		_price = EditorGUILayout.FloatField("Цена", _price);
 		EditorGUILayout.Space();
-		GUILayout.Label("Во сколько раз увеличивается цена с каждым шагом", EditorStyles.boldLabel);
-		_priceIncrease = EditorGUILayout.IntField( _priceIncrease, GUILayout.ExpandWidth(false));
+		/*GUILayout.Label("На сколько увеличивается цена с каждым шагом", EditorStyles.boldLabel);
+		_priceIncrease = EditorGUILayout.FloatField( _priceIncrease, GUILayout.ExpandWidth(false));*/
 		GUILayout.Label("Лимит прогресса улучшения", EditorStyles.boldLabel);
 		_progressLimits = EditorGUILayout.IntField(_progressLimits, GUILayout.ExpandWidth(false));
-		GUILayout.Label("Количество очков добавляемых к прибыли с каждым шагом", EditorStyles.boldLabel);
-		_amountIncrease = EditorGUILayout.IntField(_amountIncrease, GUILayout.ExpandWidth(false));			
+		/*GUILayout.Label("Количество очков добавляемых к прибыли с каждым шагом", EditorStyles.boldLabel);
+		_amountIncrease = EditorGUILayout.FloatField(_amountIncrease, GUILayout.ExpandWidth(false));*/			
 		_sprite = (Sprite)EditorGUILayout.ObjectField("Спрайт", _sprite, typeof(Sprite), true );
 
 		if (GUILayout.Button("Создать"))
@@ -59,7 +59,7 @@ public class СomponentСreatorWindow : EditorWindow
 	private void CreateComponent()
 	{
 		DataImprovement data = ScriptableObject.CreateInstance<DataImprovement>();
-		data.Init(_price, _priceIncrease, _progressLimits, _amountIncrease, _sprite);
+		data.Init(_price, _priceIncrease = 0.2f, _progressLimits, _amountIncrease = 0.1f, _sprite);
 		//Создаем два варианта:
 		//в папку "Default" - данные со значениями которые будут использоваться в начале игры
 		//в папку "Resources" - данные для текущих значений которые будут использоваться в процессе игры

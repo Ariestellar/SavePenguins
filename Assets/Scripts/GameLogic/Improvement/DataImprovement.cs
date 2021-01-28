@@ -8,14 +8,15 @@
 public class DataImprovement : ScriptableObject
 {
     [Header("Цена")]
-    [SerializeField] private int _price;
-    [Header("Во сколько раз увеличивается цена с каждым шагом")]
-    [SerializeField] private int _priceIncrease;
+    [SerializeField] private float _price;
+    /*[Header("На сколько увеличивается цена с каждым шагом(на 20%)")]
+    [SerializeField] private float _priceIncrease = 0.2f;*/
+    private float _priceIncrease = 0.2f;
     private int _currentProgress;
     [Header("Лимит прогресса улучшения")]
     [SerializeField] private int _progressLimits;    
     [Header("Количество очков добавляемых к прибыли с каждым шагом")]
-    [SerializeField] private int _amountIncrease;
+    [SerializeField] private float _amountIncrease;
     [Header("Спрайт")]
     [SerializeField] private Sprite _sprite;
     /// <summary>
@@ -28,17 +29,17 @@ public class DataImprovement : ScriptableObject
     private bool _purchaseOpportunity;
 
     #region Блок свойств для публичного использования 
-    public int AmountIncrease { get => _amountIncrease; }
-    public int Price { get => _price; set => _price = value; }
+    public float AmountIncrease { get => _amountIncrease; }
+    public float Price { get => _price; set => _price = value; }
     public int CurrentProgress { get => _currentProgress; set => _currentProgress = value; }
     public int ProgressLimits { get => _progressLimits; }
     public Sprite Sprite { get => _sprite; set => _sprite = value; }    
-    public int PriceIncrease { get => _priceIncrease; }
+    public float PriceIncrease { get => _priceIncrease; }
     public bool OnLimitReached { get => _onLimitReached; set => _onLimitReached = value; }
     public bool PurchaseOpportunity { get => _purchaseOpportunity; set => _purchaseOpportunity = value; }
     #endregion
 
-    public void Init(int price, int priceIncrease, int progressLimits, int amountIncrease, Sprite sprite)
+    public void Init(float price, float priceIncrease, int progressLimits, float amountIncrease, Sprite sprite)
     {
         _price = price;
         _priceIncrease = priceIncrease;

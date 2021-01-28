@@ -1,6 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 /// <summary>
 /// Класс отвечает за обработку команд от пользователя и бизнес логику
@@ -42,7 +40,8 @@ public class ControllerImprovement : MonoBehaviour
     private void TakeStep(int step = 1)
     {
         _data.CurrentProgress += step;
-        _data.Price *= _data.PriceIncrease * step;        
+        _data.Price += _data.Price * _data.PriceIncrease;        
+        //_data.Price += _data.Price * _data.PriceIncrease * step;        
     }
 
     /// <summary>

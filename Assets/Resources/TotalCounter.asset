@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eba56a694dc08d4eac7d815c00f993e, type: 3}
   m_Name: TotalCounter
   m_EditorClassIdentifier: 
-  _totalScore: 1800
+  _totalScore: 1800.2
   _timeInterval: 1
   _currentAmountProfit: 100
+  _currentPenguin: 15
+  _increaseProfitPerPenguin: 0.1
