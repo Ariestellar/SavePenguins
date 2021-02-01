@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eba56a694dc08d4eac7d815c00f993e, type: 3}
-  m_Name: TotalCounter
+  m_Script: {fileID: 11500000, guid: bd4a5e123c9ce3e48a1391f8e4a5bf14, type: 3}
+  m_Name: 3
   m_EditorClassIdentifier: 
-  _totalScore: 966.3528
-  _timeInterval: 1
-  _currentAmountProfit: 104.899925
-  _currentPenguin: 15
-  _increaseProfitPerPenguin: 0.1
+  _priceUnlock: 1350
+  _initialImprovementCostPercentage: 50
+  _priceIncreasePercentage: 20
+  _progressLimits: 20
+  _amountIncrease: 0.1
+  _sprite: {fileID: 0}
+  _isUnlock: 0

@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd4a5e123c9ce3e48a1391f8e4a5bf14, type: 3}
-  m_Name: A
+  m_Name: 1
   m_EditorClassIdentifier: 
-  _price: 650
-  _progressLimits: 10
+  _priceUnlock: 450
+  _initialImprovementCostPercentage: 50
+  _priceIncreasePercentage: 20
+  _progressLimits: 20
   _amountIncrease: 0.1
   _sprite: {fileID: 0}

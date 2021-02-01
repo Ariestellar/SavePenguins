@@ -13,14 +13,26 @@ public class ControllerImprovement : MonoBehaviour
     {        
         _totalCounter = controllerTotalCounter;
         _data = data;
-        GetComponent<ViewUpgrade>().Init(_data, Buy);
-
+        _data.PriceUpgrade = _data.GetPriceUpgrade(_data.PriceUnlock, _data.InitialImprovementCostPercentage, _data.CurrentProgress);
+        GetComponent<ViewUpgrade>().Init(_data, Unlock, Buy);
     }
 
     private void Update()
     {
-        if(_data != null)
-        _data.PurchaseOpportunity = OnTotalScore();
+        if (_data != null)
+        {
+            _data.IsPurchaseOpportunityUpgrade = OnTotalScore(_data.PriceUpgrade);
+            _data.IsPurchaseOpportunityUnlock = OnTotalScore(_data.PriceUnlock);
+        }        
+    }
+
+    /// <summary>
+    /// Разблокировать улучшение
+    /// </summary>
+    private void Unlock()
+    {
+        _totalCounter.SubstractPoints(_data.PriceUnlock);
+        _data.IsUnlock = true; 
     }
 
     /// <summary>
@@ -29,9 +41,9 @@ public class ControllerImprovement : MonoBehaviour
     private void Buy()
     {        
         _totalCounter.IncreaseCurrentProfit(_data.AmountIncrease);
-        _totalCounter.SubstractPoints(_data.Price);
+        _totalCounter.SubstractPoints(_data.PriceUpgrade);
         TakeStep();
-        _data.OnLimitReached = OnLimitReached();      
+        _data.OnLimitReached = OnLimitReached(); 
     }
 
     /// <summary>
@@ -40,8 +52,7 @@ public class ControllerImprovement : MonoBehaviour
     private void TakeStep(int step = 1)
     {
         _data.CurrentProgress += step;
-        _data.Price += _data.Price * _data.PriceIncrease;        
-        //_data.Price += _data.Price * _data.PriceIncrease * step;        
+        _data.PriceUpgrade += (_data.PriceUpgrade * _data.PriceIncreasePercentage / 100) * step;
     }
 
     /// <summary>
@@ -54,11 +65,11 @@ public class ControllerImprovement : MonoBehaviour
     }
 
     /// <summary>
-    /// Проверяем наличие достаточного колличества очков для покупки улучшения
+    /// Проверяем наличие достаточного колличества очков для покупки
     /// </summary>
     /// <returns>true - очков хватает</returns>
-    private bool OnTotalScore()
+    private bool OnTotalScore(float cost)
     {
-        return _totalCounter.OnTotalScore(_data.Price);
+        return _totalCounter.OnTotalScore(cost);
     }
 }

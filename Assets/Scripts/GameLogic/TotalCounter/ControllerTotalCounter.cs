@@ -42,13 +42,13 @@ public class ControllerTotalCounter
     public void SubstractPoints(float points)
     {        
         _data.TotalScore -= points;
-        _view.UpdateViewTotalScore();
+        _view.UpdateViewTotalScore();       
     }
 
     /// <summary>
     /// Проверяем достаточно ли очков общего счета для покупки улучшения 
     /// </summary>
-    /// <param name="price">Стоимость улучшения</param>
+    /// <param name="price">Стоимость для сравнения с общим счетом</param>
     /// <returns>true-достаточно/false-недостаточно</returns>
     public bool OnTotalScore(float price)
     {
