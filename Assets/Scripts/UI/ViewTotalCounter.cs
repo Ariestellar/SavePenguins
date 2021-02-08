@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 /// <summary>
 /// Отвечает за отображение глобального счетчика игры (кол-во пингвинов, общее количество денег, текущая прибыль)
+/// Для удобства отображения округляются
 /// </summary>
 public class ViewTotalCounter : MonoBehaviour
 {    
@@ -29,12 +30,12 @@ public class ViewTotalCounter : MonoBehaviour
 
     public void UpdateViewTotalScore()
     {
-        _textTotalScore.text = Convert.ToString(_data.TotalScore);        
+        _textTotalScore.text = Convert.ToString(Mathf.Round(_data.TotalScore));        
     }
 
     public void UpdateViewProfit()
     {
-        _textProfit.text = Convert.ToString(_data.CurrentAmountProfit + "$ / s");
+        _textProfit.text = Convert.ToString(Mathf.Round(_data.CurrentAmountProfit) + "$ / s");
     }
 
     public void UpdateViewCountPenguins()

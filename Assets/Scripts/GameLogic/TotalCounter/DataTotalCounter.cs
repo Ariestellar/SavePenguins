@@ -26,8 +26,7 @@ public class DataTotalCounter : ScriptableObject
     private int _factorTime = 1;
     ///<summary>Множитель для увеличения прибыли</summary>
     private int _factorProfit = 1;
-
-    //Скрыт что бы не смущать геймдизайнера лишними полями
+        
     #region Блок свойств для публичного использования 
     public float TotalScore { get => _totalScore; set => _totalScore = value; }
     public float CurrentAmountProfit { get => _currentAmountProfit; set => _currentAmountProfit = value; }
@@ -37,5 +36,4 @@ public class DataTotalCounter : ScriptableObject
     public int CurrentPenguin { get => _currentPenguin; set => _currentPenguin = value; }
     public float IncreaseProfitPerPenguin { get => _increaseProfitPerPenguin; }
     #endregion
-
 }

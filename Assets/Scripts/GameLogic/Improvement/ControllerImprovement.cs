@@ -47,12 +47,12 @@ public class ControllerImprovement : MonoBehaviour
     }
 
     /// <summary>
-    /// При покупке улучшения продвигаем прогресс на n шагов
+    /// При покупке улучшения продвигаем прогресс на 1 шаг
     /// </summary>
-    private void TakeStep(int step = 1)
+    private void TakeStep()
     {
-        _data.CurrentProgress += step;
-        _data.PriceUpgrade += (_data.PriceUpgrade * _data.PriceIncreasePercentage / 100) * step;
+        _data.CurrentProgress += 1;
+        _data.PriceUpgrade += _data.PriceUpgrade * _data.PriceIncreasePercentage * 0.01f;        
     }
 
     /// <summary>

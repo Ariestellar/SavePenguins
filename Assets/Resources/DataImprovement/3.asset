@@ -15,8 +15,6 @@ MonoBehaviour:
   _priceUnlock: 1355
   _initialImprovementCostPercentage: 50
   _priceIncreasePercentage: 20
+  _amountIncrease: 5
   _progressLimits: 20
-  _amountIncrease: 0.1
   _sprite: {fileID: 0}
-  _isUnlock: 0
-  TestBool: 1

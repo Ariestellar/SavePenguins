@@ -6,6 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Класс отвечает за отображение элементов улучшения
 /// Находится на префабе элемента улучшения
+/// Все десятичные значения округляются для удобства отображения
 /// </summary>
 public class ViewUpgrade : MonoBehaviour
 {     
@@ -37,7 +38,7 @@ public class ViewUpgrade : MonoBehaviour
         }
         else
         {
-            _panelUnlock.GetComponentInChildren<Text>().text = "Разблокировать за " + _data.PriceUnlock + " $";
+            _panelUnlock.GetComponentInChildren<Text>().text = "Разблокировать за " + Mathf.Round(_data.PriceUnlock) + " $";
             _buttonUnlock = _panelUnlock.GetComponentInChildren<Button>();
             _buttonUnlock.onClick.AddListener(ShowPanelUpgrade);
             _buttonUnlock.onClick.AddListener(unlockUpgrade);   
@@ -92,6 +93,6 @@ public class ViewUpgrade : MonoBehaviour
     {
         _progressBarImage.fillAmount = (float)_data.CurrentProgress / _data.ProgressLimits;
         _progressCountText.text = _data.CurrentProgress + "/" + _data.ProgressLimits;
-        _buttonUpgradeText.text = Convert.ToString(_data.PriceUpgrade);
+        _buttonUpgradeText.text = Convert.ToString(Mathf.Round(_data.PriceUpgrade));
     }
 }

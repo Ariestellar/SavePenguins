@@ -12,11 +12,11 @@ public class DataImprovement : ScriptableObject
     [Header("Начальная стоимостью улучшений (в % от стоимости разблокировки)")]
     [Range(0, 100)][SerializeField] private float _initialImprovementCostPercentage;
     [Header("На сколько увеличивается цена с каждым шагом (в % от текущей цены улучшения)")]
-    [Range(0, 100)][SerializeField] private float _priceIncreasePercentage;        
+    [Range(0, 100)][SerializeField] private float _priceIncreasePercentage;               
+    [Header("Прибавка к доходу от этого умения в ед.времени (в % от текущего общего дохода)")]
+    [Range(0, 100)][SerializeField] private float _amountIncrease;
     [Header("Лимит прогресса улучшения")]
-    [SerializeField] private int _progressLimits;    
-    [Header("Количество очков добавляемых к прибыли с каждым шагом")]
-    [SerializeField] private float _amountIncrease;
+    [SerializeField] private int _progressLimits; 
     [Header("Спрайт")]
     [SerializeField] private Sprite _sprite;    
 
@@ -31,7 +31,7 @@ public class DataImprovement : ScriptableObject
     /// <summary>
     /// Разблокированно ли умение?
     /// </summary>
-    [SerializeField] private bool _isUnlock;//TODO: 
+    private bool _isUnlock;
     /// <summary>
     /// Не достигнут ли лимит прокачки?
     /// </summary>
@@ -44,9 +44,7 @@ public class DataImprovement : ScriptableObject
     /// Хватает ли общего счета для покупки улучшения?
     /// </summary>
     private bool _isPurchaseOpportunityUpgrade;
-
-
-    public bool TestBool;//? почему данные сбрасываются?
+    
     #region Блок свойств для публичного использования 
     public float AmountIncrease { get => _amountIncrease; }
     public float PriceUpgrade { get => _priceUpgrade; set => _priceUpgrade = value; }
@@ -62,7 +60,7 @@ public class DataImprovement : ScriptableObject
     public bool IsPurchaseOpportunityUnlock { get => _isPurchaseOpportunityUnlock; set => _isPurchaseOpportunityUnlock = value; }
     #endregion
 
-    public void Init(float priceUnlock, float initialImprovementCostPercentage, float priceIncreasePercentage, int progressLimits, float amountIncrease, Sprite sprite)
+    public void Init(float priceUnlock, float initialImprovementCostPercentage, float priceIncreasePercentage, int progressLimits, Sprite sprite, float amountIncrease)
     {
         _priceUnlock = priceUnlock;
         _initialImprovementCostPercentage = initialImprovementCostPercentage;
@@ -74,26 +72,28 @@ public class DataImprovement : ScriptableObject
     }
 
     /// <summary>
-    /// Рассчет первоначального апгрейда является процентом от стоимости разблокировки в зависимости от уровня прогресса
+    /// Рассчет стоимости апгрейда на данном шаге, является процентом от текущей цены разблокировки(или апгрейда) в зависимости от уровня прогресса    /// 
     /// </summary>
     /// <param name="priceUnlock">Стоимость разблокировки</param>
     /// <param name="initialImprovementCostPercentage">Проценты от стоимости разблокировки</param>
     /// <param name="currentProgress">Текущий уровень прогресса улучшения, по умолчанию 0 т.е. самый начальный уровень</param>
     /// <returns>Получаем стоимость апгрейда</returns>
     public float GetPriceUpgrade(float priceUnlock, float initialImprovementCostPercentage, int currentProgress = 0)
-    {        
+    {
+        float priceUpgrade = 0;
+        initialImprovementCostPercentage *= 0.01f; //переводим в проценты
         if (currentProgress > 0)
-        {
-            float priceUpgrade = 0;
+        {            
             for (int i = 0; i < currentProgress; i++)
             {
-                priceUpgrade += priceUnlock * initialImprovementCostPercentage / 100;
-            }
-            return priceUpgrade;
+                priceUpgrade += priceUnlock * initialImprovementCostPercentage;
+            }            
         }
         else
-        {            
-            return priceUnlock * initialImprovementCostPercentage / 100;
-        }        
+        {
+            priceUpgrade = priceUnlock * initialImprovementCostPercentage;
+        }
+
+        return priceUpgrade;
     }
 }

@@ -24,17 +24,17 @@ public class StartGame : MonoBehaviour
         _dataImprovements = Resources.LoadAll<DataImprovement>("DataImprovement/");
         _dataTotalCounter = Resources.Load<DataTotalCounter>("TotalCounter");
 
-        //Создаем необходимые компоненты для игры:...        
-        _controllerTotalCounter = new ControllerTotalCounter(_dataTotalCounter, _viewTotalCounter);        
+        //Создаем необходимые компоненты для игры:       
+        _controllerTotalCounter = new ControllerTotalCounter(_dataTotalCounter, _viewTotalCounter);
+
+        //Получаем ссылки на уже существующие крмпоненты для игры:
+        _calculatorProfit = GetComponent<CalculatorProfit>();
+        _penguinSpawner = GetComponent<PenguinSpawner>();
 
         //Инициализируем все компоненты игры:
-        _viewTotalCounter.Init(_dataTotalCounter);
-        _calculatorProfit = GetComponent<CalculatorProfit>();
+        _viewTotalCounter.Init(_dataTotalCounter);        
         _calculatorProfit.Init(_dataTotalCounter, _viewTotalCounter);
-
-        _viewUpgradePanel.Init(_dataImprovements, _controllerTotalCounter);
-
-        _penguinSpawner = GetComponent<PenguinSpawner>();
+        _viewUpgradePanel.Init(_dataImprovements, _controllerTotalCounter);        
         _penguinSpawner.Init(_controllerTotalCounter);
     }
 }

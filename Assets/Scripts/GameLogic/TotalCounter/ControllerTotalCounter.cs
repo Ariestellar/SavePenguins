@@ -18,10 +18,10 @@ public class ControllerTotalCounter
     /// <summary>
     /// Прирост прибыли, при прокачке улучшения
     /// </summary>
-    /// <param name="increase">Количество очков прибавляемое, к текущей прибыли</param>
+    /// <param name="increase">Количество прибыли прибавляемое к текущей(в % от текущей прибыли)</param>
     public void IncreaseCurrentProfit(float increase)
-    {  
-        _data.CurrentAmountProfit += increase;
+    {
+        _data.CurrentAmountProfit += _data.CurrentAmountProfit * increase/100;
         _view.UpdateViewProfit();
     }
 
