@@ -31,7 +31,7 @@ public class ViewUpgrade : MonoBehaviour
         _nameText.text = _data.name;
         _progressCountText.text = _data.CurrentProgress + "/" + _data.ProgressLimits;
         _progressBarImage.fillAmount = (float)_data.CurrentProgress / _data.ProgressLimits;        
-        _buttonUpgradeText.text = Convert.ToString(_data.PriceUpgrade);
+        _buttonUpgradeText.text = Convert.ToString(Mathf.Round(_data.PriceUpgrade));
         if (_data.IsUnlock == true)
         {
             ShowPanelUpgrade();
@@ -52,7 +52,7 @@ public class ViewUpgrade : MonoBehaviour
         if (_data != null)
         {
             //Каждый кадр сравниваем наличие общего счета с ценой улучшения что бы оперативно выключать интерактивность кнопки
-            if (_data.IsPurchaseOpportunityUpgrade == false || _data.OnLimitReached == true)//TODO: эту зависимость нужно разрешить
+            if (_data.IsPurchaseOpportunityUpgrade == false)
             {
                 _buttonUpgrade.interactable = false;
                 
@@ -89,10 +89,20 @@ public class ViewUpgrade : MonoBehaviour
     /// <summary>
     /// Изменение отображения UI при клике 
     /// </summary>
-    public void ChangeViewButton()
-    {
+    private void ChangeViewButton()
+    {        
         _progressBarImage.fillAmount = (float)_data.CurrentProgress / _data.ProgressLimits;
         _progressCountText.text = _data.CurrentProgress + "/" + _data.ProgressLimits;
-        _buttonUpgradeText.text = Convert.ToString(Mathf.Round(_data.PriceUpgrade));
+
+        if (_data.OnLimitReached == false)
+        {
+            _buttonUpgradeText.text = Convert.ToString(Mathf.Round(_data.PriceUpgrade));
+        }
+        else
+        {           
+            _buttonUpgradeText.text = "Full";
+            _buttonUpgrade.interactable = false;
+            this.enabled = false;
+        }
     }
 }
